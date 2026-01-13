@@ -48,7 +48,7 @@ function SideNav({ drawerWidth, handleDrawerToggle, mobileOpen }: Props) {
   const handleLogout = () => {
     setIsLoading(true);
     dispatch(logout());
-    navigate("/login");
+    navigate("/");
     setIsLoading(false);
   };
 

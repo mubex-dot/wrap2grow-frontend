@@ -25,7 +25,7 @@ const ProtectedRoute = ({ user, children }: ProtectedRoute) => {
   const isAuth = !!user;
 
   if (!isAuth) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return children;
@@ -62,10 +62,7 @@ const Router = () => {
 
   useEffect(() => {
     //route the user to dashboard, if a logged in user tries to access signin page
-    if (
-      !!user &&
-      (location.pathname === "/" || location.pathname === "/login")
-    ) {
+    if (!!user && (location.pathname === "/" || location.pathname === "/")) {
       navigate("/dashboard");
     }
   }, [navigate, user]);
@@ -80,7 +77,7 @@ const Router = () => {
       <Route element={<NoNav />}>
         {/* public routes that dont have the sidebar nav */}
         {/* <Route path="/" element={<Landing />} /> */}
-        <Route path="/login" element={<Auth />} />
+        <Route path="/" element={<Auth />} />
         <Route path="*" element={<h1>Url does not match</h1>} />
         {/*
          Landing page routing below 
