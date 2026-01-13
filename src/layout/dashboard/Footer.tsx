@@ -2,7 +2,7 @@ function Footer() {
   const currentYear = new Date().getFullYear().toString();
   return (
     <div
-      className="px-2.5 py-8 text-center bg-[#F6F5F4] dark:bg-[#A2C8E8]"
+      className="px-2.5 py-6 text-center bg-[#F6F5F4] dark:bg-[#A2C8E8] border-t border-[#e7e7e7] dark:border-[#A2C8E8]"
       // sx={{
       //   padding: "10px 15px",
       //   textAlign: "center",

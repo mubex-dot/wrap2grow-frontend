@@ -6,6 +6,11 @@ import { useSelector } from "react-redux";
 import { login, selectCurrentUser } from "../pages/auth/authSlice";
 import { useAppDispatch } from "../app/hooks";
 import Dashboard from "@/pages/dashboard/Dashboard";
+import Auth from "@/pages/auth/Auth";
+import WrapManagement from "@/pages/wrap-management/WrapManagement";
+import Environment from "@/pages/environment/Environment";
+// import Activities from "@/pages/activities/Activities";
+import Settings from "@/pages/settings/Settings";
 // Landing page routes
 
 // Dashboard routes
@@ -75,7 +80,7 @@ const Router = () => {
       <Route element={<NoNav />}>
         {/* public routes that dont have the sidebar nav */}
         {/* <Route path="/" element={<Landing />} /> */}
-        {/* <Route path="/login" element={<Auth />} /> */}
+        <Route path="/login" element={<Auth />} />
         <Route path="*" element={<h1>Url does not match</h1>} />
         {/*
          Landing page routing below 
@@ -92,6 +97,10 @@ const Router = () => {
         }
       >
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/wrap-management" element={<WrapManagement />} />
+        <Route path="/environment" element={<Environment />} />
+        {/* <Route path="/activities" element={<Activities />} /> */}
+        <Route path="/settings" element={<Settings />} />
       </Route>
 
       <Route path="*" element={<h1>404, page not found</h1>} />

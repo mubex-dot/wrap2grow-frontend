@@ -1,9 +1,8 @@
 import CustomTextField from "@/components/inputs/CustomTextField";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { type SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { registerSchema, RegisterSchema } from "./schema";
+import { registerSchema, type RegisterSchema } from "./schema";
 import { Button } from "@/components/ui/button";
-import CustomTextArea from "@/components/inputs/CustomTextArea";
 import { useRegisterMutation } from "@/app/authApiSlice";
 import { useToast } from "@/context/ToastContext";
 
@@ -58,18 +57,10 @@ const RegisterForm = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md py-4">
         <div className="flex flex-col gap-1">
           <CustomTextField
-            label="Company Name"
-            placeholder="Enter Company Name"
-            register={register("company_name")}
-            errorMessage={errors.company_name}
-            className="my-2"
-          />
-
-          <CustomTextField
-            label="Physical Address"
-            placeholder="Enter Company Address"
-            register={register("address")}
-            errorMessage={errors.address}
+            label="Username"
+            placeholder="Enter Username"
+            register={register("username")}
+            errorMessage={errors.username}
             className="my-2"
           />
 
@@ -77,8 +68,8 @@ const RegisterForm = () => {
             label="Email Address"
             placeholder="Enter Email Address"
             type="email"
-            register={register("username")}
-            errorMessage={errors.username}
+            register={register("email")}
+            errorMessage={errors.email}
             className="my-2"
           />
 
@@ -102,11 +93,19 @@ const RegisterForm = () => {
             className="my-2"
           />
 
-          <CustomTextArea
-            label="Description"
-            placeholder="Description"
-            register={register("description")}
-            errorMessage={errors.description}
+          <CustomTextField
+            label="Farm Location"
+            placeholder="Enter Farm Location"
+            register={register("farm_location")}
+            errorMessage={errors.farm_location}
+            className="my-2"
+          />
+
+          <CustomTextField
+            label="Farm Coordinates"
+            placeholder="Enter Farm Coordinates"
+            register={register("farm_coordinate")}
+            errorMessage={errors.farm_coordinate}
             className="my-2"
           />
 

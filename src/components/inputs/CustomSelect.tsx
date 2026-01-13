@@ -22,14 +22,14 @@ const CustomSelect = ({
 }: CustomSelectProps) => {
   return (
     <div className={`${className}`}>
-      <label htmlFor={label} className="text-sm my-2 text-primary">
+      <label htmlFor={label} className="text-sm my-2 text-text-primary">
         {label}
       </label>
 
       <select
         {...register}
         id={label}
-        className={`border border-primary/10 rounded w-full py-2 px-3 text-sm h-10 text-primary`}
+        className={`border border-primary/10 rounded w-full py-2 px-3 text-sm h-10 text-text-primary`}
         disabled={disabled}
         defaultValue={defaultValue}
       >

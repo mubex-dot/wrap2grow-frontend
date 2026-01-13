@@ -1,7 +1,7 @@
 import CustomTextField from "@/components/inputs/CustomTextField";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { type SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema, LoginSchema } from "./schema";
+import { loginSchema, type LoginSchema } from "./schema";
 import { Button } from "@/components/ui/button";
 import { useLoginMutation } from "@/app/authApiSlice";
 import { useDispatch } from "react-redux";
@@ -45,9 +45,8 @@ const LoginForm = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md py-4">
         <div className="flex flex-col gap-1">
           <CustomTextField
-            label="Email"
-            placeholder="eg: example@mail.com"
-            type="email"
+            label="Username"
+            placeholder="Enter your Username"
             register={register("username")}
             errorMessage={errors.username}
             className="my-2"

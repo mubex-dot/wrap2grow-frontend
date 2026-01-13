@@ -3,8 +3,8 @@ import { z } from "zod";
 export const loginSchema = z.object({
   username: z
     .string()
-    .min(1, "Email is required")
-    .email("Invalid email. Email must be a valid email address"),
+    .nonempty("Username is required")
+    .min(1, "Username is required"),
   password: z
     .string()
     .nonempty("Password is required")
@@ -15,6 +15,10 @@ export const registerSchema = z
   .object({
     username: z
       .string()
+      .nonempty("Username is required")
+      .min(1, "Username is required"),
+    email: z
+      .string()
       .nonempty("Email is required")
       .min(1, "Email is required")
       .email("Invalid email. Email must be a valid email address"),
@@ -22,10 +26,9 @@ export const registerSchema = z
       .string()
       .nonempty("Password is required")
       .min(6, "Minimum of 6 characters is required"),
+    farm_location: z.string().optional(),
+    farm_coordinate: z.string().optional(),
     confirm_password: z.string().nonempty("Confirm Password is required"),
-    company_name: z.string().nonempty("Username is required"),
-    address: z.string().nonempty("Username is required"),
-    description: z.string().nonempty("Username is required"),
   })
   .refine((data) => data.password === data.confirm_password, {
     message: "Passwords do not match",

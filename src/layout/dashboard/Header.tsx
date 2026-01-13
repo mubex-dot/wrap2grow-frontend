@@ -15,7 +15,7 @@ function Header({ drawerWidth, handleDrawerToggle }: Props) {
   return (
     <div
       style={cssVars}
-      className="fixed shadow-none bg-bg-primary border-b border-[#e7e7e7] dark:border-[#A2C8E8] py-2 px-4 w-full sm:w-[calc(100%-var(--drawer-width))] sm:ml-(--drawer-width)"
+      className="fixed shadow-none bg-bg-primary py-2 px-4 w-full sm:w-[calc(100%-var(--drawer-width))] sm:ml-(--drawer-width)"
     >
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center justify-between sm:justify-end w-full">

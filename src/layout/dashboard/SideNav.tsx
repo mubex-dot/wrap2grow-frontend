@@ -1,24 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import { logout, selectCurrentUser } from "../../pages/auth/authSlice";
+import { useDispatch } from "react-redux";
+import { logout } from "../../pages/auth/authSlice";
 import { Button } from "@/components/ui/button";
 import {
   LayoutDashboard,
   ChevronLeft,
   FileText,
-  BarChart3,
+  // BarChart3,
   Mail,
   Settings,
-  Users,
-  ListOrdered,
-  ChartColumnIncreasing,
-  Wallet,
 } from "lucide-react";
 
-// Import your logo assets
-import connectedLogoLight from "../../assets/icons/connected-logo-light.svg";
-import connectedLogoDark from "../../assets/icons/connected-logo-dark.svg";
 import sidenavImg from "../../assets/icons/sidenavIcon.svg";
 
 type Props = {
@@ -32,7 +25,6 @@ function SideNav({ drawerWidth, handleDrawerToggle, mobileOpen }: Props) {
   const navigate = useNavigate();
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
-  const user = useSelector(selectCurrentUser);
   const sideNavRef = useRef<HTMLDivElement>(null);
 
   // Handle click outside to close mobile drawer
@@ -60,98 +52,55 @@ function SideNav({ drawerWidth, handleDrawerToggle, mobileOpen }: Props) {
     setIsLoading(false);
   };
 
-  const adminNavItems = [
+  const navItems = [
     {
       text: "Dashboard",
       icon: LayoutDashboard,
       link: "/dashboard",
     },
     {
-      text: "User List",
-      icon: Users,
-      link: "/users",
-    },
-    {
-      text: "Customers",
-      icon: ListOrdered,
-      link: "/customers",
-    },
-    {
-      text: "Analytics",
-      icon: ChartColumnIncreasing,
-      link: "/analytics",
-    },
-    {
-      text: "Payments",
-      icon: Wallet,
-      link: "/payments",
-    },
-    {
-      text: "Settings",
-      icon: Settings,
-      link: "/settings",
-    },
-  ];
-
-  const organizationNavItems = [
-    {
-      text: "Dashboard",
-      icon: LayoutDashboard,
-      link: "/dashboard",
-    },
-    {
-      text: "Messages",
+      text: "Wrap Management",
       icon: Mail,
-      link: "/messages",
+      link: "/wrap-management",
     },
     {
-      text: "Files",
+      text: "Environment",
       icon: FileText,
-      link: "/files",
+      link: "/environment",
     },
-    {
-      text: "Analytics",
-      icon: BarChart3,
-      link: "/analytics",
-    },
+    // {
+    //   text: "Analytics",
+    //   icon: BarChart3,
+    //   link: "/analytics",
+    // },
+    // {
+    //   text: "Activities",
+    //   icon: Settings,
+    //   link: "/activities",
+    // },
     {
       text: "Settings",
       icon: Settings,
       link: "/settings",
     },
   ];
-
-  const navItems =
-    user?.role === "admin" || user?.role === "super_admin"
-      ? adminNavItems
-      : organizationNavItems;
 
   const drawer = (
     <div className="px-4 h-full overflow-auto">
       <div className="my-12 flex justify-center items-center flex-col">
         <div className="flex items-center gap-2 w-full justify-between">
-          <div className="w-full">
-            <div className="w-full flex flex-col justify-center items-center">
-              <img
-                src={connectedLogoDark}
-                alt="connected logo"
-                className="w-3/4 h-auto hidden dark:block"
-              />
-              <img
-                src={connectedLogoLight}
-                alt="connected logo"
-                className="w-3/4 h-auto block dark:hidden"
-              />
-            </div>
-            {/* <p className="text-xs font-light uppercase mt-4 text-primary">
-              {user?.role === "admin"
-                ? "Admin dashboard"
-                : "Organization dashboard"}
-            </p> */}
-          </div>
+          <div className="w-full"></div>
           <button onClick={handleDrawerToggle} className="block sm:hidden">
             <ChevronLeft className="text-[#95969D] cursor-pointer" />
           </button>
+        </div>
+
+        <div className="flex items-center gap-4 w-full">
+          <img src={sidenavImg} alt="Wrap2Grow icon" />
+          <div>
+            <h3 className="font-bold text-foreground">Wrap2Grow</h3>
+            <p className="text-text-primary">Green Degrade Tracker</p>
+          </div>
         </div>
       </div>
 
@@ -166,8 +115,8 @@ function SideNav({ drawerWidth, handleDrawerToggle, mobileOpen }: Props) {
                   to={item.link}
                   className={({ isActive }) =>
                     isActive
-                      ? "text-white block w-full bg-[#025692]"
-                      : "text-primary block w-full"
+                      ? "text-primary-foreground block w-full bg-primary rounded-md"
+                      : "text-text-primary block w-full"
                   }
 
                   // onClick={() => navigate(`${item.link}`)}
@@ -194,18 +143,6 @@ function SideNav({ drawerWidth, handleDrawerToggle, mobileOpen }: Props) {
           })}
         </ul>
         <div className="flex flex-col gap-2">
-          <div className="bg-[#A2C8E8] dark:bg-[#F6F5F4] w-full p-3 flex items-center gap-3 rounded-xl">
-            <div>
-              <img src={sidenavImg} alt="" className="w-full" />
-            </div>
-            <div>
-              <p className="text-xs md:text-sm text-[#1A1A1A] font-semibold">
-                {user?.company_name.split(" ")[0]}
-              </p>
-              {/* <p className="text-xs text-[#1A1A1A]">Admin</p> */}
-            </div>
-          </div>
-
           <Button
             className="w-full"
             disabled={isLoading}
@@ -243,7 +180,7 @@ function SideNav({ drawerWidth, handleDrawerToggle, mobileOpen }: Props) {
             transform ${mobileOpen ? "translate-x-0" : "-translate-x-full"}
             transition-transform duration-300 ease-in-out
             bg-bg-primary border-none
-            block sm:hidden
+            block sm:hidden bg-background
           `}
         >
           <div className="h-full overflow-y-auto">{drawer}</div>

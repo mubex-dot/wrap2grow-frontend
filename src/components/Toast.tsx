@@ -14,7 +14,7 @@ const Toast = ({ open, message, type, onClose }: ToastProps) => {
   return (
     <div
       className={`fixed bottom-5 right-5 px-4 py-2 rounded-md shadow-lg text-white ${
-        type === "success" ? "bg-[#4AC000]" : "bg-[#E72B2B]"
+        type === "success" ? "bg-primary" : "bg-[#E72B2B]"
       }`}
     >
       <div className="flex items-center justify-between">
